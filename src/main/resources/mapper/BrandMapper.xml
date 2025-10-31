@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis_test.dao.BrandMapper">
+
+
+    <select id="selectById" resultType="com.example.mybatis_test.entity.Brand">
+        select * from tb_brand
+        where id = #{id}
+    </select>
+
+    <select id="selectByIds" resultType="com.example.mybatis_test.entity.Brand">
+        select * from tb_brand
+        where id in
+        <foreach collection="ids" item="id" close=")" open="(" separator=",">
+            #{id}
+        </foreach>
+    </select>
+</mapper>
